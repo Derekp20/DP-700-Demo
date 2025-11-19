@@ -24,16 +24,6 @@
 # META   }
 # META }
 
-# CELL ********************
-
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
 # PARAMETERS CELL ********************
 
 table_name = "sales"
@@ -63,17 +53,6 @@ df = df["SalesOrderNumber", "SalesOrderLineNumber", "OrderDate", "Year", "Month"
 
 # Load the data into a table
 df.write.format("delta").mode("append").saveAsTable(table_name)
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
-abfss://Demo@onelake.dfs.fabric.microsoft.com/LH02.Lakehouse/Files
 
 # METADATA ********************
 
