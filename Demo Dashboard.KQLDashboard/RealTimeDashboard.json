@@ -1,0 +1,74 @@
+{
+  "schema_version": 67,
+  "tiles": [
+    {
+      "id": "5693eb45-66ca-432b-b915-b12722db48ee",
+      "title": "Avg symbol Price",
+      "visualType": "table",
+      "pageId": "65c9c753-c18e-41b3-a794-9ffa6d0f1e3d",
+      "layout": {
+        "width": 9,
+        "height": 7,
+        "x": 0,
+        "y": 0
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "b70becff-6ba9-461d-af00-4e8d52dd83a1"
+      },
+      "visualOptions": {
+        "selectedDataOnLoad": {
+          "all": true,
+          "limit": 10
+        }
+      }
+    }
+  ],
+  "baseQueries": [],
+  "parameters": [
+    {
+      "kind": "duration",
+      "id": "e0cbf1dd-4b48-4541-9461-3ad417526f2c",
+      "displayName": "Time range",
+      "description": "",
+      "beginVariableName": "_startTime",
+      "endVariableName": "_endTime",
+      "defaultValue": {
+        "kind": "dynamic",
+        "count": 1,
+        "unit": "hours"
+      },
+      "showOnPages": {
+        "kind": "all"
+      }
+    }
+  ],
+  "dataSources": [
+    {
+      "id": "7469eb37-8724-46e2-8d9a-3f0cffb2ec77",
+      "kind": "kusto-trident",
+      "scopeId": "kusto-trident",
+      "clusterUri": "",
+      "database": "996d14b8-4c2d-a7d7-4098-f924b3d75e80",
+      "name": "DP-700-EventHouse",
+      "workspace": "00000000-0000-0000-0000-000000000000"
+    }
+  ],
+  "pages": [
+    {
+      "name": "Page 1",
+      "id": "65c9c753-c18e-41b3-a794-9ffa6d0f1e3d"
+    }
+  ],
+  "queries": [
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "7469eb37-8724-46e2-8d9a-3f0cffb2ec77"
+      },
+      "text": "stock\r\n| filter [\"time\"] > ago(5m)\r\n| summarize avgBidPrice = avg(bidPrice) by symbol\r\n| project symbol, avgBidPrice\r\n| sort by avgBidPrice",
+      "id": "b70becff-6ba9-461d-af00-4e8d52dd83a1",
+      "usedVariables": []
+    }
+  ]
+}

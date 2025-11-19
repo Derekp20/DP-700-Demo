@@ -1,0 +1,22 @@
+{
+  "queryset": {
+    "version": "1.0.0",
+    "dataSources": [
+      {
+        "id": "24ff6f88-44d8-407e-b882-c634370bbb5e",
+        "clusterUri": "https://trd-64zqnh2kx8nqbb75qh.z5.kusto.fabric.microsoft.com",
+        "type": "Fabric",
+        "databaseItemId": "b3d75e80-f924-4098-a7d7-4c2d996d14b8",
+        "databaseItemName": "DP-700-EventHouse"
+      }
+    ],
+    "tabs": [
+      {
+        "id": "f3a50e1e-88a8-41b2-b4e1-bb9361da936c",
+        "content": "stock\n| filter [\"time\"] > ago(5m)\n| summarize avgBidPrice = avg(bidPrice) by symbol\n| project symbol, avgBidPrice\n| sort by avgBidPrice",
+        "title": "Tab",
+        "dataSourceId": "24ff6f88-44d8-407e-b882-c634370bbb5e"
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "queryset": {
+    "version": "1.0.0",
+    "dataSources": [
+      {
+        "id": "05af5731-32c9-45bd-9ea6-2d4f061b15b5",
+        "clusterUri": "https://trd-d6rzk8t3bgx2cdhcu8.z5.kusto.fabric.microsoft.com",
+        "type": "Fabric",
+        "databaseItemId": "fc5d5ee1-e716-4a72-93ae-fab4c9fe7288",
+        "databaseItemName": "DP-700-EventHouse2"
+      }
+    ],
+    "tabs": [
+      {
+        "id": "a39420ed-3dc9-45da-9a85-b65447807215",
+        "content": ".create-or-alter function tripsbylocation(location:string )\n{bikes\n| where Neighbourhood == location}\n\n\ntripsbylocation(\"Mile End\")\n\nSELECT TOP 100 * FROM bikes",
+        "title": "",
+        "dataSourceId": "05af5731-32c9-45bd-9ea6-2d4f061b15b5"
+      }
+    ]
+  }
+}
